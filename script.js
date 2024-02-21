@@ -39,3 +39,22 @@ getData();
 
 
 
+// async function removeItem(item) {
+//     try {
+//         let response = await fetch ("https://striveschool-api.herokuapp.com/api/product/" + item[0].id, {
+//             method: "DELETE",
+//             headers: {
+//                 "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWQ0ZWRjNTljNDM3MDAwMTkzYzM3NDIiLCJpYXQiOjE3MDg0NTMzMTcsImV4cCI6MTcwOTY2MjkxN30.-vpFk7Nxk60iIhUvEIaIMIsh6NAau1929jfPCCJJ9MA"
+//                 }
+//         });
+
+//         const json = await response.json();
+//         console.log(json);
+
+//     } catch (err) {
+//     }
+// }
+
+// removeItem(myProduct);
+
+

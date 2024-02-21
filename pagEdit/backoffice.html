@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Edit</title>
+    <script src="https://kit.fontawesome.com/29d9bcc801.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="backoffice.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+
+
+    <!-- CREATE NEW OBJECT -->
+
+    <div class="creation-area row bg-dark p-3 g-0 text-center">
+        <div class="col-md-4">
+            <div class="col-md-2">
+                <input type="text" id="object-brand" placeholder="Brand">
+            </div>
+            <div class="col-md-2">
+                <input type="text" id="object-name" placeholder="Name">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <input type="text" id="object-description" placeholder="Description">
+        </div>
+        <div class="col-md-4">
+            <div class="col-md-2">
+                <input type="url" id="object-img" placeholder="Image URL">
+            </div>
+            <div class="col-md-2">
+                <input type="number" name="object-price" id="object-price" min="0" placeholder="Price">
+            </div>
+        </div>
+        <div class="col-md-2">
+        <button type="button" class="btn btn-sm btn-success" id="btn-create-obj">Create Object</button>
+    </div>
+    </div>
+   
+
+
+    <div class="container-fluid">
+
+    <table class="table table-dark table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Brand</th>
+            <th scope="col">Description</th>
+            <th scope="col">Image</th>
+            <th scope="col">Price</th>
+          </tr>
+        </thead>
+        <tbody id="list-object">
+        </tbody>
+    </table>
+   
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="backoffice.js"></script>
+</body>
+</html>
