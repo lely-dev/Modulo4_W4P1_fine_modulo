@@ -55,6 +55,8 @@ function createListObject({name, brand, description, image, price}){
     let objPrice = document.createElement("td");
     objPrice.innerText = price;
 
+    let containerBtn = document.createElement("td");
+
     listTr.appendChild(objName);
     listTr.appendChild(objBrand);
     listTr.appendChild(objDesc);

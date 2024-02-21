@@ -8,18 +8,6 @@
 // })
 const urlCall = "https://striveschool-api.herokuapp.com/api/product/";
 
-// let myProduct = {
-//     name: "REDMI 13C 8+256GB-Midnight Black",
-//     description: "Risoluzione: Display & Design • 6.74'' HD+ con DC Dimming 260ppi 1600 x 720 • Refresh rate: 90Hz • Touch Sampling rate: 180Hz • Luminosità: 450 nits (typ), 60 nits HBM • Rapporto di contrasto 1500:1 • Color Depth 8-bit • Color Garmut NTSC 70% (typ) • Pro-grade Eye Protection: TÜV Low Blue Light / Certificazione Flicker",
-//     brand: "XIAOMI",
-//     imageUrl:"https://www.euronics.it/dw/image/v2/BFPN_PRD/on/demandware.static/-/Sites-catalog_euronics_master/default/dw5d075a56/hi-res/232012707_5.jpg?sw=1000&q=90&strip=false",
-//     price: "169"
-// };
-
-
-
-
-
 async function getData(){
     try {
         const result = await fetch(urlCall, {
@@ -28,6 +16,9 @@ async function getData(){
             }
             })
         const json = await result.json();
+        json.forEach(item => {
+            createCard(item);
+        });
         console.log(json);
         
     } catch (error) {
@@ -37,7 +28,58 @@ async function getData(){
 
 getData();
 
+const containerCardObj = document.getElementById("my-product-container");
 
+function createCard({name, brand, imageUrl, description, price}){
+
+    /* <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+    </div> */
+
+    let divCard = document.createElement("div");
+    divCard.classList.add("card", "col-md-3");
+
+    let cardImg = document.createElement("img");
+    cardImg.src = imageUrl;
+    cardImg.classList.add("card-img-top", "img-fluid");
+
+    let divText = document.createElement("div");
+    
+    let brandObj = document.createElement("h5");
+    brandObj.innerText = brand;
+    brandObj.classList.add("card-title");
+
+    let nameObj = document.createElement("h6");
+    nameObj.innerText = name;
+
+    let descObj = document.createElement("p");
+    descObj.innerText = description;
+    descObj.classList.add("card-text");
+
+    let priceObj = document.createElement("p");
+    price.innerText = price;
+    priceObj.classList.add("card-text");
+
+    let btnDetails = document.createElement("a");
+    btnDetails.innerText = "Details";
+    btnDetails.classList.add("btn");
+
+
+    divCard.appendChild(cardImg);
+    divText.appendChild(brandObj);
+    divText.appendChild(nameObj);
+    divText.appendChild(descObj);
+    divText.appendChild(priceObj);
+    divCard.appendChild(divText);
+    divCard.appendChild(btnDetails);
+    containerCardObj.appendChild(divCard);
+
+}
 
 // async function removeItem(item) {
 //     try {
