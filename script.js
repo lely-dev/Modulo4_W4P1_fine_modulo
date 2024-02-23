@@ -8,6 +8,8 @@
 // })
 const urlCall = "https://striveschool-api.herokuapp.com/api/product/";
 
+window.onload = getData();
+
 async function getData(){
     try {
         const result = await fetch(urlCall, {
@@ -26,11 +28,15 @@ async function getData(){
     }
 }
 
-getData();
+
+// const homepage = document.getElementById("homepage");
+// const backpage = document.getElementById("backpage");
+
+// backpage.href = backoffice/backoffice.html;
 
 const containerCardObj = document.getElementById("my-product-container");
 
-function createCard({name, brand, imageUrl, description, price}){
+function createCard({name, brand, imageUrl, description, price, _id}){
 
     /* <div class="card" style="width: 18rem;">
             <img src="..." class="card-img-top" alt="...">
@@ -67,7 +73,9 @@ function createCard({name, brand, imageUrl, description, price}){
 
     let btnDetails = document.createElement("a");
     btnDetails.innerText = "Details";
-    btnDetails.classList.add("btn");
+    btnDetails.classList.add("btn", "btn-success");
+    btnDetails.href = `detail.html?id=${_id}`;
+    btnDetails.target = "_blank";
 
 
     divCard.appendChild(cardImg);

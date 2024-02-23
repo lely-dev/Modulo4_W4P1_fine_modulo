@@ -1,3 +1,5 @@
+const homepage = document.getElementById("homepage");
+const backpage = document.getElementById("backpage");
 
 const getName = document.getElementById("object-name");
 
@@ -36,7 +38,7 @@ async function createData(){
 
 createData();
 
-function createListObject({name, brand, description, image, price}){
+function createListObject({name, brand, description, image, price, _id}){
 
     let listTr = document.createElement("tr");
 
@@ -57,17 +59,35 @@ function createListObject({name, brand, description, image, price}){
 
     let containerBtn = document.createElement("td");
 
+    let btnEdit = document.createElement("a");
+    btnEdit.innerText = "Edit";
+    btnEdit.classList.add("btn", "btn-primary");
+    btnEdit.href = `objedit.html?id=${_id}`;
+    btnEdit.target = "_blank";
+
+    let btnDelate = document.createElement("a");
+    btnDelate.innerText = "Delate";
+    btnDelate.classList.add("btn", "btn-danger");
+    btnDelate.addEventListener("click", ()=>{
+        delateObj(_id);
+    })
+
     listTr.appendChild(objName);
     listTr.appendChild(objBrand);
     listTr.appendChild(objDesc);
     listTr.appendChild(objImg);
     listTr.appendChild(objPrice);
+    containerBtn.appendChild(btnEdit);
+    containerBtn.appendChild(btnDelate);
+    listTr.appendChild(containerBtn);
     getListContainer.appendChild(listTr);
 
 
 }
 
 
+
+// FUNZIONE DI AGGIUNTA OGGETTI
 const getBtnCreateObj = document.getElementById("btn-create-obj");
 
 getBtnCreateObj.addEventListener("click", async () =>{
@@ -95,3 +115,27 @@ getBtnCreateObj.addEventListener("click", async () =>{
         // }, 5000);
     }
 })
+
+
+// FUNZIONE DI DELATE
+
+async function delateObj(id){
+    const result = await fetch(urlBackoffice + id, 
+        { method: "DELETE", 
+        headers: {
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWQ0ZWRjNTljNDM3MDAwMTkzYzM3NDIiLCJpYXQiOjE3MDg0NTMzMTcsImV4cCI6MTcwOTY2MjkxN30.-vpFk7Nxk60iIhUvEIaIMIsh6NAau1929jfPCCJJ9MA"
+    }})
+    createData();
+}
+
+
+// async function deletePost(pid) {
+//     const res = await fetch(apiUrl + pid, { "method": "DELETE" });
+//     // console.log(`Cancellazione del post ${pid} eseguita con successo!`);
+//     // Avviso temporaneo di avvenuta cancellazione
+//     deleteAlert.classList.toggle("d-none");
+//     setTimeout(() => {
+//         deleteAlert.classList.toggle("d-none");
+//     }, 5000);
+//     getPosts();
+// }
