@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: "Montserrat", sans-serif
 }
 
 
@@ -70,3 +73,27 @@
     padding: 0;
 }
 
+/* DETAILS PAGE */
+
+#container-details{
+    margin: 60px 0;
+}
+
+#container-details div div.col:first-child{
+    display: flex;
+    justify-content: center;
+}
+
+
+#container-details div div.col:last-child{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+#container-details div div.col:last-child div:last-child{
+    display: flex;
+    gap: 10px;
+
+}

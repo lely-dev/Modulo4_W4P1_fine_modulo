@@ -46,23 +46,33 @@ async function showDetails({name, brand, description, imageUrl, price}){
     let colText = document.createElement("div");
     colText.classList.add("col");
 
-    let objBrand = document.createElement("h5");
+    let containerNameBrand = document.createElement("div");
+    let objBrand = document.createElement("h3");
     objBrand.innerText = brand;
 
-    let objName = document.createElement("h6");
+    let objName = document.createElement("h4");
     objName.innerText = name;
 
     let objDesc = document.createElement("p");
     objDesc.innerText = description;
 
+    let containerPrice = document.createElement("div");
+    let priceTx = document.createElement("p");
+    priceTx.innerText = "Price: ";
+    priceTx.classList.add("fw-bold", "fs-4");
     let objPrice = document.createElement("p");
     objPrice.innerText = price;
+    objPrice.classList.add("fs-4");
+
 
     colImg.appendChild(objImg);
-    colText.appendChild(objBrand);
-    colText.appendChild(objName);
+    containerNameBrand.appendChild(objBrand);
+    containerNameBrand.appendChild(objName);
+    containerPrice.appendChild(priceTx);
+    containerPrice.appendChild(objPrice);
+    colText.appendChild(containerNameBrand);
     colText.appendChild(objDesc);
-    colText.appendChild(objPrice);
+    colText.appendChild(containerPrice);
     boxDetails.appendChild(colImg);
     boxDetails.appendChild(colText);
     getContainerDetails.appendChild(boxDetails);
