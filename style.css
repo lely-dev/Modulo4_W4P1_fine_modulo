@@ -4,7 +4,69 @@
     box-sizing: border-box;
 }
 
+
+#hero{
+    height: 150px;
+    width: 100%;
+    background-image: url("https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#hero div{
+    background-color: white;
+    padding: 3px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#hero > div input{
+    border: none;
+
+}
+
+#hero > div button{
+    border: none;
+    background-color: black;
+    color: white;
+}
+
+
+#my-product-container{
+    margin-top: 30px;
+}
+
+
+#my-product-container > div > div.card{
+    height: 430px;
+    justify-content: space-between;
+    border: none;
+    box-shadow: 2px 2px 15px #e3e3e4;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    border-radius: 15px;
+}
+
 #my-product-container > div img {
-    height: 300px;
+    height: 240px;
     object-fit: contain;
 }
+
+
+#my-product-container > div > div.card >div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+
+#my-product-container > div > div.card >a.btn{
+    padding: 0;
+}
+

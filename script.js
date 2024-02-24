@@ -6,9 +6,15 @@
 // "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWQ0ZWRjNTljNDM3MDAwMTkzYzM3NDIiLCJpYXQiOjE3MDg0NTMzMTcsImV4cCI6MTcwOTY2MjkxN30.-vpFk7Nxk60iIhUvEIaIMIsh6NAau1929jfPCCJJ9MA"
 // }
 // })
+let searchObj;
+
+const inputObj = document.getElementById("input-search");
+
 const urlCall = "https://striveschool-api.herokuapp.com/api/product/";
 
 window.onload = getData();
+
+
 
 async function getData(){
     try {
@@ -18,9 +24,11 @@ async function getData(){
             }
             })
         const json = await result.json();
-        json.forEach(item => {
+        searchObj= [...json];
+        searchObj.forEach(item => {
             createCard(item);
         });
+        
         console.log(json);
         
     } catch (error) {
@@ -29,26 +37,17 @@ async function getData(){
 }
 
 
-// const homepage = document.getElementById("homepage");
-// const backpage = document.getElementById("backpage");
-
-// backpage.href = backoffice/backoffice.html;
 
 const containerCardObj = document.getElementById("my-product-container");
 
 function createCard({name, brand, imageUrl, description, price, _id}){
 
-    /* <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-    </div> */
+
+    let boxCard = document.createElement("div");
+    boxCard.classList.add("col-2", "col-md-4", "g-5", "py-4");
 
     let divCard = document.createElement("div");
-    divCard.classList.add("card", "col-md-3");
+    divCard.classList.add("card");
 
     let cardImg = document.createElement("img");
     cardImg.src = imageUrl;
@@ -63,48 +62,67 @@ function createCard({name, brand, imageUrl, description, price, _id}){
     let nameObj = document.createElement("h6");
     nameObj.innerText = name;
 
-    let descObj = document.createElement("p");
-    descObj.innerText = description;
-    descObj.classList.add("card-text");
-
+    let priceBox = document.createElement("div");
+    priceBox.classList.add("d-flex", "gap-2");
+    let pricetx = document.createElement("p");
+    pricetx.innerHTML = "Price: ";
     let priceObj = document.createElement("p");
-    price.innerText = price;
-    priceObj.classList.add("card-text");
+    priceObj.innerText = price;
 
     let btnDetails = document.createElement("a");
     btnDetails.innerText = "Details";
-    btnDetails.classList.add("btn", "btn-success");
+    btnDetails.classList.add("btn", "btn-dark", "text-white");
     btnDetails.href = `detail.html?id=${_id}`;
     btnDetails.target = "_blank";
 
 
-    divCard.appendChild(cardImg);
+    
     divText.appendChild(brandObj);
     divText.appendChild(nameObj);
-    divText.appendChild(descObj);
-    divText.appendChild(priceObj);
+    priceBox.appendChild(pricetx);
+    priceBox.appendChild(priceObj);
+    divText.appendChild(priceBox);
+    divText.appendChild(btnDetails);
+    divCard.appendChild(cardImg);
     divCard.appendChild(divText);
-    divCard.appendChild(btnDetails);
-    containerCardObj.appendChild(divCard);
-
+    boxCard.appendChild(divCard);
+    containerCardObj.appendChild(boxCard);
+    console.log(price);
 }
 
-// async function removeItem(item) {
-//     try {
-//         let response = await fetch ("https://striveschool-api.herokuapp.com/api/product/" + item[0].id, {
-//             method: "DELETE",
-//             headers: {
-//                 "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWQ0ZWRjNTljNDM3MDAwMTkzYzM3NDIiLCJpYXQiOjE3MDg0NTMzMTcsImV4cCI6MTcwOTY2MjkxN30.-vpFk7Nxk60iIhUvEIaIMIsh6NAau1929jfPCCJJ9MA"
-//                 }
-//         });
 
-//         const json = await response.json();
-//         console.log(json);
+// RICERCA OGGETTI
 
-//     } catch (err) {
-//     }
-// }
 
-// removeItem(myProduct);
 
+let btnSearch = document.getElementById("btn-search");
+
+
+// btnSearch.addEventListener("click", () => {
+//     const searchResult = searchObj.filter((item) =>{
+//         if (item.name.includes(inputObj.value)){
+//             console.log(item);
+//             return true
+//         } else {
+//             return false
+//         }
+//     })
+//     // console.log(res);
+//     // createCard(res);
+// })
+
+
+function liveSearch() {
+    if(searchObj) {
+        let liveSearchValue = inputObj.value;
+        let filteredResults = searchObj.filter((song) => {
+            return song.title.toLowerCase().includes(liveSearchValue.toLowerCase().trim());
+        });
+
+        createCard(filteredResults, false);
+
+        // console.log(`Active results ${activeResults.length}`);
+        // console.log(`Filtered results ${activeResults.length}`);
+    }
+}
 
