@@ -13,10 +13,19 @@
     align-items: center;
 }
 
-/* #list-object{
-    border: none;
-} */
-
-#table-title thead{
-    border-style: none !important;
+#list-object tr td img{
+    height: 100px;
 }
+
+#list-object tr{
+    vertical-align: middle;
+    padding: 15px 0;
+}
+
+#list-object tr td:last-child{
+    text-align: center;
+}
+
+
+/* MODAL */
+

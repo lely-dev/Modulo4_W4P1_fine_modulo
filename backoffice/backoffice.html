@@ -6,6 +6,9 @@
     <title>E-commerce Edit</title>
     <script src="https://kit.fontawesome.com/29d9bcc801.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="backoffice.css">
 </head>
 <body class="bg-dark">
@@ -47,14 +50,14 @@
         </div>
         <div class="row py-4">
             <div class="col">
-                <button type="button" class="btn btn-sm btn-success" id="btn-create-obj">Create Object</button>
+                <button type="button" class="btn btn-sm btn-success" id="btn-create-obj" >Create Object</button>
             </div>
         </div>
     
     </div>
    
 
-
+    <!-- CONTEAINER LIST OBJECT -->
     <div class="container-fluid">
 
     <table class="table table-dark table-striped" id="table-title">
@@ -72,6 +75,66 @@
     </table>
    
     </div>
+
+    <!-- MODALE -->
+
+    <div id="errorModal" class="modal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                <p>Please fill in all fields.</p>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="close-btn-error">Close</button>
+                </div>
+            </div>
+        </div>
+      </div>
+   
+      
+
+    <div class="modal fade" id="errorModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                <p>Some text in the modal.</p>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+   
+
+    
+
+
+    <!-- Vertically centered modal -->
+  <!-- <div class="modal-dialog modal-dialog-centered" id="missing_info">
+    <p>Fill out all fields</p>
+  </div>
+  
+
+    Alert per segnalare dati incompleti!
+    <div class="alert alert-warning d-none my-3" role="alert" id="alert-msg">
+        <i class="fa-solid fa-triangle-exclamation me-1"></i>
+        <span>Devi inserire tutti e 3 i campi obbligatori!</span>
+    </div>
+    Alert per segnalare cancellazione!
+    <div class="alert alert-danger d-none my-3" role="alert" id="delete-msg">
+      <i class="fa-solid fa-trash me-1"></i>
+      <span>Il post è stato eliminato con successo!</span>
+  </div>
+</div> -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="backoffice.js"></script>

@@ -13,6 +13,8 @@ const getPrice = document.getElementById("object-price");
 
 const getListContainer = document.getElementById("list-object");
 
+const getMissingInfo = document.getElementById("myModal");
+
 const urlBackoffice = "https://striveschool-api.herokuapp.com/api/product/";
 
 async function createData(){
@@ -38,7 +40,7 @@ async function createData(){
 
 createData();
 
-function createListObject({name, brand, description, image, price, _id}){
+function createListObject({name, brand, description, imageUrl, price, _id}){
 
     let listTr = document.createElement("tr");
 
@@ -52,7 +54,8 @@ function createListObject({name, brand, description, image, price, _id}){
     objDesc.innerText = description;
 
     let objImg = document.createElement("td");
-    objImg.innerText = image;
+    let imgTd = document.createElement("img");
+    imgTd.src = imageUrl;
 
     let objPrice = document.createElement("td");
     objPrice.innerText = price;
@@ -61,13 +64,13 @@ function createListObject({name, brand, description, image, price, _id}){
 
     let btnEdit = document.createElement("a");
     btnEdit.innerText = "Edit";
-    btnEdit.classList.add("btn", "btn-primary");
+    btnEdit.classList.add("btn", "btn-primary", "my-2");
     btnEdit.href = `objedit.html?id=${_id}`;
     btnEdit.target = "_blank";
 
     let btnDelate = document.createElement("a");
     btnDelate.innerText = "Delate";
-    btnDelate.classList.add("btn", "btn-danger");
+    btnDelate.classList.add("btn", "btn-danger", "my-2");
     btnDelate.addEventListener("click", ()=>{
         delateObj(_id);
     })
@@ -75,6 +78,7 @@ function createListObject({name, brand, description, image, price, _id}){
     listTr.appendChild(objName);
     listTr.appendChild(objBrand);
     listTr.appendChild(objDesc);
+    objImg.appendChild(imgTd);
     listTr.appendChild(objImg);
     listTr.appendChild(objPrice);
     containerBtn.appendChild(btnEdit);
@@ -89,9 +93,10 @@ function createListObject({name, brand, description, image, price, _id}){
 
 // FUNZIONE DI AGGIUNTA OGGETTI
 const getBtnCreateObj = document.getElementById("btn-create-obj");
+var errorModal = document.getElementById("errorModal");
+    
 
 getBtnCreateObj.addEventListener("click", async () =>{
-
     if(getName.value && getBrand.value && getDesc.value && getImg.value && getPrice.value) {
     
         let newObj = { "name": getName.value, "brand": getBrand.value, "description": getDesc.value, "imageUrl": getImg.value, "price": getPrice.value, "time": new Date() };
@@ -108,13 +113,20 @@ getBtnCreateObj.addEventListener("click", async () =>{
             console.log(error);
         }
     } else {
-        // inputAlert.classList.toggle("d-none");
-        console.log("Devi inserire tutti i campi obbligatori!");
-        // setTimeout(() => {
-        //     inputAlert.classList.toggle("d-none");
-        // }, 5000);
+        errorModal.style.display = "block";
     }
 })
+
+var closeBtnModal = document.getElementById("close-btn-error");
+
+closeBtnModal.addEventListener("click", ()=>{
+    errorModal.style.display = "none";
+})
+
+
+
+
+
 
 
 // FUNZIONE DI DELATE
