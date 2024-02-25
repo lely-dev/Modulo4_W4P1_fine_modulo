@@ -75,16 +75,16 @@
 
 
 
-    <!-- MODALE -->
+    <!-- MODALE di ERRORE-->
 
     <div id="errorModal" class="modal" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                <h4 class="modal-title">Modal Header</h4>
+                <h4 class="modal-title text-danger fw-bold">Error</h4>
                 </div>
                 <div class="modal-body">
-                <p>Please fill in all fields.</p>
+                <p class="text-danger">Please fill in all fields.</p>
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal" id="close-btn-error">Close</button>
@@ -93,6 +93,43 @@
         </div>
     </div>
    
+
+    <!-- MODALE di CEAZIONE-->
+
+    <div id="createModal" class="modal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h4 class="modal-title text-success fw-bold">Successfully created</h4>
+                </div>
+                <div class="modal-body">
+                <p class="text-success">Your object was successfully created.</p>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="close-btn-create">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- MODALE di CEAZIONE-->
+
+    <div id="deleteModal" class="modal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h4 class="modal-title text-success fw-bold">Successfully deleted</h4>
+                </div>
+                <div class="modal-body">
+                <p class="text-success">Your object was successfully deleted.</p>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="close-btn-delete">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
         
    

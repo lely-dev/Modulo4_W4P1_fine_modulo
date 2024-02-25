@@ -41,6 +41,7 @@ async function seeObj() {
 // FUNZIONE DI MODIFICA OGGETTI
 
 const btnSave = document.getElementById("btn-save-update");
+const modifyModal = document.getElementById("modifyModal");
 
 btnSave.addEventListener("click", async () =>{
     
@@ -58,6 +59,8 @@ btnSave.addEventListener("click", async () =>{
                 }
                 })
 
+                modifyModal.style.display= "block";
+
 
         } catch (error) {
             console.log(error);
@@ -66,6 +69,9 @@ btnSave.addEventListener("click", async () =>{
     }
 })
 
+const closeBtnModify = document.getElementById("close-btn-modify");
 
-
+closeBtnModify.addEventListener("click", ()=>{
+    modifyModal.style.display = "none";
+})
 

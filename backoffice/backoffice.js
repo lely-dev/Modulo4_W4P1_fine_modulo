@@ -93,7 +93,8 @@ function createListObject({name, brand, description, imageUrl, price, _id}){
 
 // FUNZIONE DI AGGIUNTA OGGETTI
 const getBtnCreateObj = document.getElementById("btn-create-obj");
-var errorModal = document.getElementById("errorModal");
+const createModal = document.getElementById("createModal");
+const errorModal = document.getElementById("errorModal");
     
 
 getBtnCreateObj.addEventListener("click", async () =>{
@@ -109,6 +110,7 @@ getBtnCreateObj.addEventListener("click", async () =>{
             "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWQ0ZWRjNTljNDM3MDAwMTkzYzM3NDIiLCJpYXQiOjE3MDg0NTMzMTcsImV4cCI6MTcwOTY2MjkxN30.-vpFk7Nxk60iIhUvEIaIMIsh6NAau1929jfPCCJJ9MA"
         }}); 
             createData();
+            createModal.style.display= "block";
         } catch(error) {
             console.log(error);
         }
@@ -117,7 +119,13 @@ getBtnCreateObj.addEventListener("click", async () =>{
     }
 })
 
-var closeBtnModal = document.getElementById("close-btn-error");
+const closeBtnCrateModal = document.getElementById("close-btn-create");
+const closeBtnModal = document.getElementById("close-btn-error");
+
+
+closeBtnCrateModal.addEventListener("click", ()=>{
+    createModal.style.display = "none";
+})
 
 closeBtnModal.addEventListener("click", ()=>{
     errorModal.style.display = "none";
@@ -125,11 +133,9 @@ closeBtnModal.addEventListener("click", ()=>{
 
 
 
-
-
-
-
 // FUNZIONE DI DELATE
+
+const deleteModal = document.getElementById("deleteModal");
 
 async function delateObj(id){
     const result = await fetch(urlBackoffice + id, 
@@ -138,16 +144,11 @@ async function delateObj(id){
         "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWQ0ZWRjNTljNDM3MDAwMTkzYzM3NDIiLCJpYXQiOjE3MDg0NTMzMTcsImV4cCI6MTcwOTY2MjkxN30.-vpFk7Nxk60iIhUvEIaIMIsh6NAau1929jfPCCJJ9MA"
     }})
     createData();
+    deleteModal.style.display = "block";
 }
 
+const closeBtnDeleteModal = document.getElementById("close-btn-delete");
 
-// async function deletePost(pid) {
-//     const res = await fetch(apiUrl + pid, { "method": "DELETE" });
-//     // console.log(`Cancellazione del post ${pid} eseguita con successo!`);
-//     // Avviso temporaneo di avvenuta cancellazione
-//     deleteAlert.classList.toggle("d-none");
-//     setTimeout(() => {
-//         deleteAlert.classList.toggle("d-none");
-//     }, 5000);
-//     getPosts();
-// }
+closeBtnDeleteModal.addEventListener("click", ()=>{
+    errorModal.style.display = "none";
+})

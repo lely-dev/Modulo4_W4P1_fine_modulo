@@ -44,7 +44,7 @@ function createCard({name, brand, imageUrl, description, price, _id}){
 
 
     let boxCard = document.createElement("div");
-    boxCard.classList.add("col-2", "col-md-4", "g-5", "py-4");
+    boxCard.classList.add("col-12", "col-md-4", "g-5", "py-4");
 
     let divCard = document.createElement("div");
     divCard.classList.add("card");
