@@ -6,16 +6,21 @@
 // "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWQ0ZWRjNTljNDM3MDAwMTkzYzM3NDIiLCJpYXQiOjE3MDg0NTMzMTcsImV4cCI6MTcwOTY2MjkxN30.-vpFk7Nxk60iIhUvEIaIMIsh6NAau1929jfPCCJJ9MA"
 // }
 // })
+
+const btnSearch = document.getElementById("btn-search");
+
 let searchObj;
 
-const inputObj = document.getElementById("input-search");
+let inputObjSearch = document.getElementById("input-search");
+
+let containerCardObj = document.getElementById("my-product-container");
 
 const urlCall = "https://striveschool-api.herokuapp.com/api/product/";
 
 window.onload = getData();
 
 
-
+// FUNZIONE PER LA CHIAMATA
 async function getData(){
     try {
         const result = await fetch(urlCall, {
@@ -29,19 +34,21 @@ async function getData(){
             createCard(item);
         });
         
-        console.log(json);
-        
     } catch (error) {
         console.log(error);
     }
 }
 
 
+// FUNZIONE PER CREARE LE CARD DEGLI OGGETTI
 
-const containerCardObj = document.getElementById("my-product-container");
+
 
 function createCard({name, brand, imageUrl, description, price, _id}){
 
+    
+
+    // containerCardObj.innerHTML = "";
 
     let boxCard = document.createElement("div");
     boxCard.classList.add("col-12", "col-md-4", "g-5", "py-4");
@@ -87,42 +94,27 @@ function createCard({name, brand, imageUrl, description, price, _id}){
     divCard.appendChild(divText);
     boxCard.appendChild(divCard);
     containerCardObj.appendChild(boxCard);
-    console.log(price);
 }
 
 
 // RICERCA OGGETTI
 
 
+btnSearch.addEventListener("click", () => {
 
-let btnSearch = document.getElementById("btn-search");
+    const resultSearch = searchObj.filter((item) => {
+        console.log(searchObj);
+        if (item.name.includes(inputObjSearch.value)){
+            console.log(item);
+            return true
+        } else {
+            console.log("errore");
+            return false
+        }
+    })
+    console.log(resultSearch);
+    createCard(resultSearch);
+})
 
 
-// btnSearch.addEventListener("click", () => {
-//     const searchResult = searchObj.filter((item) =>{
-//         if (item.name.includes(inputObj.value)){
-//             console.log(item);
-//             return true
-//         } else {
-//             return false
-//         }
-//     })
-//     // console.log(res);
-//     // createCard(res);
-// })
-
-
-function liveSearch() {
-    if(searchObj) {
-        let liveSearchValue = inputObj.value;
-        let filteredResults = searchObj.filter((song) => {
-            return song.title.toLowerCase().includes(liveSearchValue.toLowerCase().trim());
-        });
-
-        createCard(filteredResults, false);
-
-        // console.log(`Active results ${activeResults.length}`);
-        // console.log(`Filtered results ${activeResults.length}`);
-    }
-}
 
